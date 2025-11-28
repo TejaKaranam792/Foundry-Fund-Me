@@ -1,67 +1,119 @@
-## Foundry
+🌐 Foundry Fund Me — A Gas-Optimized Crowdfunding Smart Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A minimal yet production-grade crowdfunding contract built entirely with Foundry.
+This project implements the classic Fund Me contract, enriched with modern tooling, script automation, and a clean testing pipeline.
 
-Foundry consists of:
+It demonstrates:
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+🧩 Gas-efficient Solidity patterns
 
-## Documentation
+🧪 Full test suite (unit + integration)
 
-https://book.getfoundry.sh/
+🛠 Automated deployments & interactions
 
-## Usage
+🔧 Price feed integration
 
-### Build
+🚀 Realistic E2E flows using Foundry scripts
 
-```shell
-$ forge build
-```
+If you're exploring Foundry, Chainlink feeds, or contract scripting, this repo is a perfect reference.
 
-### Test
+🚀 Features
+✔ Gas-efficient funding logic
 
-```shell
-$ forge test
-```
+Minimum USD requirement enforced via Chainlink Aggregator.
 
-### Format
+Funders tracked in an array + mapping.
 
-```shell
-$ forge fmt
-```
+✔ Automated deployment scripts
 
-### Gas Snapshots
+Deterministic deployments with DeployFundMe.s.sol.
 
-```shell
-$ forge snapshot
-```
+Grab "most recent deployment" on any chain.
 
-### Anvil
+✔ Interaction scripts
 
-```shell
-$ anvil
-```
+FundFundMe.s.sol → fund with one command
 
-### Deploy
+WithdrawFundMe.s.sol → owner withdrawal
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+✔ Fully tested
 
-### Cast
+Includes tests for:
 
-```shell
-$ cast <subcommand>
-```
+Funding
 
-### Help
+Withdrawal
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
-# Foundry-Fund-Me
+Edge cases
+
+Integration tests using real-world scripts
+
+Using cheatcodes like vm.prank, vm.startBroadcast, and conditional broadcasting for test environments.
+
+📁 Project Structure
+Foundry-Fund-Me/
+├── src/
+│   └── FundMe.sol
+├── script/
+│   ├── DeployFundMe.s.sol
+│   └── Interactions.s.sol
+├── test/
+│   ├── FundMeTest.t.sol
+│   └── FundMeTestIntegration.t.sol
+├── lib/
+│   ├── chainlink-evm
+│   ├── forge-std
+│   └── foundry-devops
+├── foundry.toml
+└── README.md
+
+⚙️ Prerequisites
+
+Foundry installed
+
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
+
+
+Node (optional, for scripts that fetch RPC URLs)
+
+🏗 Build & Test
+🧪 Run all tests
+forge test
+
+🔍 Run with logs
+forge test -vvv
+
+🚧 Local build
+forge build
+
+🌍 Deployment
+Deploy to any network:
+forge script script/DeployFundMe.s.sol --rpc-url $RPC_URL --broadcast --private-key $PRIVATE_KEY
+
+Fund the contract:
+forge script script/Interactions.s.sol:FundFundMe --rpc-url $RPC_URL --broadcast --private-key $PRIVATE_KEY
+
+Withdraw as owner:
+forge script script/Interactions.s.sol:WithdrawFundMe --rpc-url $RPC_URL --broadcast --private-key $PRIVATE_KEY
+
+🔗 Powered By
+
+Foundry — blazing-fast Ethereum development toolkit
+
+Chainlink — price feeds for reliable USD comparisons
+
+Foundry-DevOps — get recent deployments per chain
+
+Forge-Std — cheatcodes, console logs & helpers
+
+📬 Author
+
+Teja Karanam
+→ GitHub: TejaKaranam792
+
+→ LinkedIn: https://www.linkedin.com/in/tejakaranam
+
+⭐ If this repo helped you, consider giving it a star!
+
+It helps more developers discover solid Foundry examples.
